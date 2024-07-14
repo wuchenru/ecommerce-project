@@ -13,7 +13,7 @@ maven
 springboot
 gradle
 dependency injection
-postgre-sql
+postgre-sql/mysql/mongodb/aruora/
 cloud aws load balancer ec2 security group network gate   - compute/storage/network
 distributed system multi threading lock 
 vue react other frontend tool
@@ -21,3 +21,11 @@ restful api
 microservice 
 
 docker kubernetes
+
+
+authentication
+
+
+axios
+
+
