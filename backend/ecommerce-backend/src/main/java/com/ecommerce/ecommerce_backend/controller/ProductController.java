@@ -38,3 +38,44 @@ public class ProductController {
 		return ProductRepository.findAll();
 	}
 }
+
+
+// package com.ecommerce.ecommerce_backend.controller;
+// import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.web.bind.annotation.*;
+
+// import com.ecommerce.ecommerce_backend.model.Product;
+// import com.ecommerce.ecommerce_backend.repository.ProductRepository;
+
+// @RestController // Combines @Controller and @ResponseBody
+// @RequestMapping(path = "/products") // Base path for all endpoints in this controller
+// public class ProductController {
+
+//     private final ProductRepository productRepository;
+
+//     @Autowired // Constructor injection is preferred
+//     public ProductController(ProductRepository productRepository) {
+//         this.productRepository = productRepository;
+//     }
+
+//     @PostMapping(path = "/add") // Maps POST requests to /products/add
+//     public String addNewProduct(
+//             @RequestParam String name, 
+//             @RequestParam String description,
+//             @RequestParam Double price) {
+//         // Creates and saves a new product
+//         Product n = new Product();
+//         n.setName(name);
+//         n.setDescription(description);
+//         n.setPrice(price);
+//         productRepository.save(n);
+//         return "Product Saved\n";
+//     }
+
+//     @GetMapping(path = "/all") // Maps GET requests to /products/all
+//     public Iterable<Product> getAllProducts() {
+//         // Retrieves all products
+//         System.out.println("Fetch all Products from the DB");
+//         return productRepository.findAll();
+//     }
+// }
