@@ -19,6 +19,8 @@ distributed system multi threading lock
 vue react other frontend tool
 restful api 
 microservice 
+apache kafka message queue - event driven
+
 
 docker kubernetes
 

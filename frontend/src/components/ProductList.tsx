@@ -1,11 +1,12 @@
 // src/components/ProductList.tsx
 import React, { useEffect, useState } from 'react';
-import { fetchProducts } from './api/productApi';
+import { fetchProducts } from '../api/productApi';
 
 interface Product {
   id: number;
   name: string;
   price: number;
+  description: string;
   // Add other product fields as necessary
 }
 
@@ -17,7 +18,10 @@ const ProductList: React.FC = () => {
   useEffect(() => {
     const getProducts = async () => {
       try {
+        
         const products = await fetchProducts();
+        console.log(products)
+        
         setProducts(products);
       } catch (error) {
         setError('Failed to fetch products');
@@ -43,7 +47,7 @@ const ProductList: React.FC = () => {
       <ul>
         {products.map(product => (
           <li key={product.id}>
-            {product.name} - ${product.price}
+            {product.name} - ${product.price} - {product.description}
           </li>
         ))}
       </ul>
