@@ -2,6 +2,8 @@ package com.ecommerce.ecommerce_backend.config;
 
 import com.ecommerce.ecommerce_backend.filter.JwtAuthenticationFilter;
 import com.ecommerce.ecommerce_backend.service.CustomUserDetailsService;
+
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,10 +25,14 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import jakarta.servlet.http.HttpServletResponse; // Import statement
 
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Configuration
 @EnableMethodSecurity // Enables method-level security (e.g., @PreAuthorize)
 public class SecurityConfig {
+
+    private static final Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
 
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
@@ -70,12 +76,19 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // No session will be created or used by Spring Security
                 .and()
             .authorizeHttpRequests()
-                .requestMatchers("/api/auth/**", "/products/all").permitAll() // Public endpoints
+                .requestMatchers("/api/auth/**", "/products/all", "/users/all", "products/test").permitAll() // Public endpoints
                 .anyRequest().authenticated() // All other endpoints require authentication
                 .and()
             .exceptionHandling()
                 .authenticationEntryPoint((request, response, authException) -> {
+                    // Log the authentication exception
+                    logger.error("Unauthorized access attempt: {}", authException.getMessage());
                     response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+                })
+                .accessDeniedHandler((request, response, accessDeniedException) -> {
+                    // Log the access denied exception
+                    logger.error("Access denied: {}", accessDeniedException.getMessage());
+                    response.sendError(HttpServletResponse.SC_FORBIDDEN, "Access Denied");
                 });
 
         // Add JWT filter

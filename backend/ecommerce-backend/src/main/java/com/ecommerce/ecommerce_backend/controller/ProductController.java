@@ -19,11 +19,12 @@ public class ProductController {
     @GetMapping("/all")
     public Iterable<Product> getAllProducts() {
         System.out.println("Fetch all Products from the DB");
+		System.out.println("Test");
         return productRepository.findAll();
     }
 
     // Only authenticated users can add products
-    @PreAuthorize("hasRole('ADMIN')")
+    // @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/add")
     public String addNewProduct (@RequestParam String name, 
                                  @RequestParam String description,
@@ -35,4 +36,11 @@ public class ProductController {
         productRepository.save(n);
         return "Product Saved\n";
     }
+
+	@GetMapping("/test")
+	public String test() {
+		System.out.println("Test");
+		return "Test";  // 修改这里
+	}
+	
 }
