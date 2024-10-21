@@ -19,7 +19,7 @@ public class UserController {
     private UserRepository userRepository;
 
     // Only users with ADMIN role can add users via this endpoint
-    // @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/addUser")
     public String addUser(
             @RequestParam String name, 

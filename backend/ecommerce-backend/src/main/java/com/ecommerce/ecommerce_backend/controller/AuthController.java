@@ -51,22 +51,41 @@ public class AuthController {
         return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
     }
 
+    // @PostMapping("/register")
+    // public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
+    //     if(userRepository.findByEmail(signUpRequest.getEmail()) != null) {
+    //         return ResponseEntity.badRequest().body("Email address already in use!");
+    //     }
+
+    //     // Creating user's account
+    //     User user = new User();
+    //     user.setName(signUpRequest.getName());
+    //     user.setEmail(signUpRequest.getEmail());
+    //     user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
+    //     // Assign default role
+    //     user.getRoles().add("USER");
+
+    //     userRepository.save(user);
+
+    //     return ResponseEntity.ok("User registered successfully");
+    // }
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
+        // Check if the email is already in use
         if(userRepository.findByEmail(signUpRequest.getEmail()) != null) {
             return ResponseEntity.badRequest().body("Email address already in use!");
         }
-
+    
         // Creating user's account
         User user = new User();
         user.setName(signUpRequest.getName());
         user.setEmail(signUpRequest.getEmail());
-        user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
-        // Assign default role
-        user.getRoles().add("USER");
-
-        userRepository.save(user);
-
+        user.setPassword(passwordEncoder.encode(signUpRequest.getPassword())); // Encode the password
+        user.getRoles().add("USER"); // Assign default role
+    
+        userRepository.save(user); // Save the user to the database
+    
         return ResponseEntity.ok("User registered successfully");
     }
+    
 }

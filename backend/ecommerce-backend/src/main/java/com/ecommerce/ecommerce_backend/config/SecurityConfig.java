@@ -51,21 +51,64 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    // Define the CORS configuration
+    // // Define the CORS configuration
+    // @Bean
+    // public CorsConfigurationSource corsConfigurationSource() {
+    //     CorsConfiguration configuration = new CorsConfiguration();
+    //     configuration.setAllowedOrigins(List.of("*")); // Set your allowed origins
+    //     configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+    //     configuration.setAllowCredentials(true);
+    //     configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+        
+    //     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    //     source.registerCorsConfiguration("/**", configuration);
+    //     return source;
+    // }
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("*")); // Set your allowed origins
+        configuration.setAllowedOrigins(List.of("http://localhost:3000")); // Set your allowed origins
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowCredentials(true);
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
-        
+
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
 
-    // Define the security filter chain
+    // // Define the security filter chain
+    // @Bean
+    // public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    //     http
+    //         .cors() // Enable CORS
+    //             .and()
+    //         .csrf().disable() // Disable CSRF for REST APIs
+    //         .sessionManagement()
+    //             .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // No session will be created or used by Spring Security
+    //             .and()
+    //         .authorizeHttpRequests()
+    //             .requestMatchers("/api/auth/**", "/products/all", "/users/all", "/users/addUser", "/products/test", "/users/login").permitAll() // Public endpoints
+    //             .anyRequest().authenticated() // All other endpoints require authentication
+    //             .and()
+    //         .exceptionHandling()
+    //             .authenticationEntryPoint((request, response, authException) -> {
+    //                 // Log the authentication exception
+    //                 logger.error("Unauthorized access attempt: {}", authException.getMessage());
+    //                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+    //             })
+    //             .accessDeniedHandler((request, response, accessDeniedException) -> {
+    //                 // Log the access denied exception
+    //                 logger.error("Access denied: {}", accessDeniedException.getMessage());
+    //                 response.sendError(HttpServletResponse.SC_FORBIDDEN, "Access Denied");
+    //             });
+
+    //     // Add JWT filter
+    //     http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+
+    //     return http.build();
+    // }
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -76,8 +119,7 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // No session will be created or used by Spring Security
                 .and()
             .authorizeHttpRequests()
-                .requestMatchers("/api/auth/**", "/products/all", "/users/all", "products/test").permitAll() // Public endpoints
-                .anyRequest().authenticated() // All other endpoints require authentication
+                .anyRequest().permitAll() // Allow all requests by default
                 .and()
             .exceptionHandling()
                 .authenticationEntryPoint((request, response, authException) -> {
@@ -90,10 +132,10 @@ public class SecurityConfig {
                     logger.error("Access denied: {}", accessDeniedException.getMessage());
                     response.sendError(HttpServletResponse.SC_FORBIDDEN, "Access Denied");
                 });
-
+    
         // Add JWT filter
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-
+    
         return http.build();
     }
 }
