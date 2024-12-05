@@ -51,25 +51,38 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    // Define the CORS configuration
+    // // Define the CORS configuration
+    // @Bean
+    // public CorsConfigurationSource corsConfigurationSource() {
+    //     CorsConfiguration configuration = new CorsConfiguration();
+    //     configuration.setAllowedOrigins(List.of("*")); // Set your allowed origins
+    //     configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+    //     configuration.setAllowCredentials(true);
+    //     configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+        
+    //     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    //     source.registerCorsConfiguration("/**", configuration);
+    //     return source;
+    // }
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("*")); // Set your allowed origins
+        configuration.setAllowedOrigins(List.of("http://localhost:3000")); // Allow frontend origin
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowCredentials(true);
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
-        
+        configuration.setAllowCredentials(true); // Allow credentials for cookies or headers
+    
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+    
 
     // Define the security filter chain
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .cors() // Enable CORS
+            .cors().configurationSource(corsConfigurationSource()) // Enable CORS
                 .and()
             .csrf().disable() // Disable CSRF for REST APIs
             .sessionManagement()

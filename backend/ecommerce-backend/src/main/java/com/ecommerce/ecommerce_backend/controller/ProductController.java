@@ -40,7 +40,7 @@ public class ProductController {
 	@GetMapping("/test")
 	public String test() {
 		System.out.println("Test");
-		return "Test";  // 修改这里
+		return "Test";  
 	}
 	
 }
