@@ -51,7 +51,7 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    // // Define the CORS configuration
+
     // @Bean
     // public CorsConfigurationSource corsConfigurationSource() {
     //     CorsConfiguration configuration = new CorsConfiguration();
@@ -64,6 +64,11 @@ public class SecurityConfig {
     //     source.registerCorsConfiguration("/**", configuration);
     //     return source;
     // }
+
+    // // Define the CORS configuration
+    // this is important because if we use the above code (in the comment section)
+    // even there is a CorsConfig.java file to set up the cors but in fact the spring security
+    // will be the first "firewall" and will block request from localhost 3000
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
@@ -89,7 +94,7 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // No session will be created or used by Spring Security
                 .and()
             .authorizeHttpRequests()
-                .requestMatchers("/api/auth/**", "/products/all", "/users/all", "products/test").permitAll() // Public endpoints
+                .requestMatchers("/api/auth/**", "/products/all", "/users/all", "products/test", "/users/addUser").permitAll() // Public endpoints
                 .anyRequest().authenticated() // All other endpoints require authentication
                 .and()
             .exceptionHandling()

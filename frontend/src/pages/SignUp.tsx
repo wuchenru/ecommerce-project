@@ -10,7 +10,8 @@ const SignUp: React.FC = () => {
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/users/addUser', {
+      // const response = await axios.post('http://localhost:8080/users/addUser', {
+      const response = await axios.post('http://localhost:8080/api/auth/register', {
         name,
         email,
         password
