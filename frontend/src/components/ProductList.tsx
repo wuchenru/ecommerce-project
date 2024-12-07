@@ -1,6 +1,6 @@
-// src/components/ProductList.tsx
 import React, { useEffect, useState } from 'react';
 import { fetchProducts } from '../api/productApi';
+import styles from './ProductList.module.css'; // Import CSS module
 
 interface Product {
   id: number;
@@ -18,10 +18,8 @@ const ProductList: React.FC = () => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        
         const products = await fetchProducts();
-        console.log(products)
-        
+        console.log(products);
         setProducts(products);
       } catch (error) {
         setError('Failed to fetch products');
@@ -44,13 +42,15 @@ const ProductList: React.FC = () => {
   return (
     <div>
       <h1>Products</h1>
-      <ul>
+      <div className={styles.container}>
         {products.map(product => (
-          <li key={product.id}>
-            {product.name} - ${product.price} - {product.description}
-          </li>
+          <div key={product.id} className={styles.item}>
+            <h2>{product.name}</h2>
+            <p>${product.price}</p>
+            <p>{product.description}</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
