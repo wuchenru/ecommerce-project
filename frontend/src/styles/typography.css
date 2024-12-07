@@ -1,0 +1,32 @@
+/* src/styles/typography.css */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    color: var(--text-color);
+    font-weight: bold;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  p {
+    margin: 0;
+    color: var(--text-secondary-color);
+    font-size: var(--font-size-medium);
+    line-height: 1.6;
+  }
+  
+  a {
+    color: var(--primary-color);
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  a:hover {
+    color: darken(var(--primary-color), 10%);
+  }
+  

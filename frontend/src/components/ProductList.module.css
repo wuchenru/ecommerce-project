@@ -1,31 +1,31 @@
-/* ProductList.module.css */
+@import '../styles/variables.css'; /* Import global variables */
+
 .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-  }
-  
-  .item {
-    background: #f0f8ff; /* Light pastel blue */
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 16px;
-    text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  }
-  
-  .item h2 {
-    font-size: 1.25rem;
-    color: #333; /* Dark gray for better contrast */
-  }
-  
-  .item p {
-    font-size: 0.9rem;
-    color: #555; /* Medium gray for descriptions */
-  }
-  
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--spacing-medium); /* Use the spacing variable */
+}
+
+.item {
+  background: var(--secondary-color); /* Use a global color */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: var(--spacing-medium); /* Use spacing variable */
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.item h2 {
+  font-size: var(--font-size-large); /* Use typography variable */
+  color: var(--text-color); /* Use a global color */
+}
+
+.item p {
+  font-size: var(--font-size-small);
+  color: var(--text-secondary-color);
+}

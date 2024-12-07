@@ -1,0 +1,21 @@
+/* src/styles/variables.css */
+:root {
+    /* Colors */
+    --primary-color: #4caf50; /* Green */
+    --secondary-color: #f0f8ff; /* Light pastel blue */
+    --text-color: #333; /* Dark gray */
+    --text-secondary-color: #555; /* Medium gray */
+    --background-color: #f9fafb; /* Light gray */
+  
+    /* Spacing */
+    --spacing-small: 8px;
+    --spacing-medium: 16px;
+    --spacing-large: 24px;
+  
+    /* Typography */
+    --font-family: 'Arial', sans-serif;
+    --font-size-small: 14px;
+    --font-size-medium: 16px;
+    --font-size-large: 20px;
+  }
+  

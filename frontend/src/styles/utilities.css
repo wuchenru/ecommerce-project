@@ -1,0 +1,34 @@
+/* src/styles/utilities.css */
+/* Margin and Padding */
+.m-small {
+    margin: var(--spacing-small);
+  }
+  .m-medium {
+    margin: var(--spacing-medium);
+  }
+  .p-small {
+    padding: var(--spacing-small);
+  }
+  .p-medium {
+    padding: var(--spacing-medium);
+  }
+  
+  /* Flexbox Helpers */
+  .flex {
+    display: flex;
+  }
+  .flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .flex-space-between {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* Visibility */
+  .hidden {
+    display: none !important;
+  }
+  
