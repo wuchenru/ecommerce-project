@@ -1,0 +1,75 @@
+/* SignIn.css */
+
+/* Container for centering the form */
+.signin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--background-color);
+  }
+  
+  /* Styling for the form */
+  .signin-form {
+    background: white;
+    padding: var(--spacing-large);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  /* Form title */
+  .signin-title {
+    margin-bottom: var(--spacing-medium);
+    color: var(--primary-color);
+    text-align: center;
+  }
+  
+  /* Form group for input fields */
+  .form-group {
+    margin-bottom: var(--spacing-medium);
+  }
+  
+  /* Form labels */
+  .form-label {
+    display: block;
+    margin-bottom: var(--spacing-small);
+    color: var(--text-color);
+    font-weight: bold;
+  }
+  
+  /* Form inputs */
+  .form-input {
+    width: 100%;
+    padding: var(--spacing-small);
+    font-size: var(--font-size-medium);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    box-sizing: border-box;
+  }
+  
+  .form-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+  }
+  
+  /* Button styling */
+  .btn {
+    display: inline-block;
+    width: 100%;
+    padding: var(--spacing-small);
+    font-size: var(--font-size-medium);
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    background-color: var(--primary-color);
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #388e3c; /* Darker green */
+  }
+  
