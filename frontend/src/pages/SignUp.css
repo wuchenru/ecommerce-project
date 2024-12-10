@@ -48,3 +48,26 @@
     box-sizing: border-box;
   }
   
+  .form-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+  }
+  
+  /* Button styling */
+  .btn {
+    display: inline-block;
+    width: 100%;
+    padding: var(--spacing-small);
+    font-size: var(--font-size-medium);
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    background-color: var(--primary-color);
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #388e3c; /* Darker green */
+  }
+  
