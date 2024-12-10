@@ -29,5 +29,22 @@
     margin-bottom: var(--spacing-medium);
   }
   
-
+  /* Form labels */
+  .form-label {
+    display: block;
+    margin-bottom: var(--spacing-small);
+    color: var(--text-color);
+    font-weight: bold;
+  }
+  
+  /* Form inputs */
+  .form-input {
+    width: 100%;
+    padding: var(--spacing-small);
+    font-size: var(--font-size-medium);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    box-sizing: border-box;
+  }
   
