@@ -33,8 +33,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                                     FilterChain filterChain) throws ServletException, IOException {
         try {
             String jwt = getJwtFromRequest(request);
-
+            System.out.println(jwt);
+            System.out.println("sign1"); // only have sign1 printed meaning that error message was in tokenProvider.validateToken
             if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
+                System.out.println("sign2");
                 String email = tokenProvider.getEmailFromJWT(jwt);
 
                 UserDetails userDetails = customUserDetailsService.loadUserByUsername(email);
@@ -47,6 +49,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
         } catch (Exception ex) {
             // You can log the exception here
+            System.out.println("sign3");
         }
 
         filterChain.doFilter(request, response);
