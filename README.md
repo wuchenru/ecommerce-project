@@ -71,3 +71,6 @@ A fullstack e-commerce platform built with a focus on performance, scalability, 
 
 ### DB Connection Test
 - mysql -h 127.0.0.1 -P 3306 -u myuser2 -p
+
+### DB start
+- Docker Image
