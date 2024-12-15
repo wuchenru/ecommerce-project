@@ -59,3 +59,12 @@ A fullstack e-commerce platform built with a focus on performance, scalability, 
 
 ### 4. Structured API Permission Management
 - Develop a clearer structure for managing API permissions, such as using a constants class or configuration file for better readability and maintenance.
+
+
+## Command
+
+### Backend
+- ./mvnw spring-boot:run
+
+### Frontend
+- npm start
