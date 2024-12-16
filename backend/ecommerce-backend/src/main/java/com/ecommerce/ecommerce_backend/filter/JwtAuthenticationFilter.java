@@ -46,6 +46,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
                 // Set the authentication in the SecurityContext
                 SecurityContextHolder.getContext().setAuthentication(authentication);
+            } else {
+                    System.out.println("here is the problem!!");
             }
         } catch (Exception ex) {
             // You can log the exception here

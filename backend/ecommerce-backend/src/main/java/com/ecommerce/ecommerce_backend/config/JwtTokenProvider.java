@@ -47,19 +47,26 @@ public class JwtTokenProvider {
 
     // Validate JWT token
     public boolean validateToken(String authToken) {
+        System.out.println("problem-1");
         try {
+            System.out.println("problem0");
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
             return true;
         } catch (SignatureException ex) {
             // Invalid JWT signature
+            System.out.println("problem1");
         } catch (MalformedJwtException ex) {
             // Invalid JWT token
+            System.out.println("problem2");
         } catch (ExpiredJwtException ex) {
             // Expired JWT token
+            System.out.println("problem3");
         } catch (UnsupportedJwtException ex) {
             // Unsupported JWT token
+            System.out.println("problem4");
         } catch (IllegalArgumentException ex) {
             // JWT claims string is empty
+            System.out.println("problem5");
         }
         return false;
     }
