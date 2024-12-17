@@ -60,6 +60,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     // Extract JWT token from the Authorization header
     private String getJwtFromRequest(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
+        System.out.println("Authorization Header: " + bearerToken); // the problem is the token is empty null
         // Token is in the form "Bearer token"
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
             return bearerToken.substring(7); // Remove "Bearer " prefix

@@ -45,6 +45,10 @@ public class AuthController {
                 )
         );
 
+        System.out.println("email: " + loginRequest.getEmail());
+        System.out.println("password: " + loginRequest.getPassword());
+        System.out.println("Authenticated or not?: " + authentication.isAuthenticated());
+
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String jwt = tokenProvider.generateToken(authentication);

@@ -21,6 +21,8 @@ public class JwtTokenProvider {
 
     // Generate JWT token
     public String generateToken(Authentication authentication) {
+        System.out.println("generating token!!");
+
         org.springframework.security.core.userdetails.User userPrincipal = 
                 (org.springframework.security.core.userdetails.User) authentication.getPrincipal();
 
