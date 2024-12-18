@@ -55,16 +55,4 @@ public class UserController {
         return "test";
     }
 
-	// @GetMapping("/all")
-	// @PreAuthorize("hasRole('ADMIN')")
-	// public ResponseEntity<?> getAllUsers() {
-	// 	System.out.println("Attempt to fetch all users from the DB");
-	// 	return ResponseEntity.ok(userRepository.findAll());
-	// }
-
-	// // Exception handling for access denied
-	// @ExceptionHandler(AccessDeniedException.class)
-	// public ResponseEntity<?> handleAccessDeniedException(AccessDeniedException e) {
-	// 	return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied: " + e.getMessage());
-	// }
 }
