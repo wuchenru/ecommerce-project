@@ -1,3 +1,8 @@
+package com.ecommerce.ecommerce_backend.model;
+
+import jakarta.persistence.*;
+import java.util.*;
+
 @Entity
 public class Cart {
     @Id
