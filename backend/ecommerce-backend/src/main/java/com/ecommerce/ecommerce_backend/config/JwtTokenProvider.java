@@ -29,12 +29,22 @@ public class JwtTokenProvider {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + jwtExpirationInMs);
 
-        return Jwts.builder()
-                .setSubject(userPrincipal.getUsername()) // typically email
-                .setIssuedAt(new Date())
-                .setExpiration(expiryDate)
-                .signWith(SignatureAlgorithm.HS512, jwtSecret)
-                .compact();
+        // return Jwts.builder()
+        //         .setSubject(userPrincipal.getUsername()) // typically email
+        //         .setIssuedAt(new Date())
+        //         .setExpiration(expiryDate)
+        //         .signWith(SignatureAlgorithm.HS512, jwtSecret)
+        //         .compact();
+        String token = Jwts.builder()
+        .setSubject(userPrincipal.getUsername()) // typically email
+        .setIssuedAt(new Date())
+        .setExpiration(expiryDate)
+        .signWith(SignatureAlgorithm.HS512, jwtSecret)
+        .compact();
+
+        // Print the generated token
+        System.out.println("Generated JWT Token: " + token);
+        return token;
     }
 
     // Get email from JWT
