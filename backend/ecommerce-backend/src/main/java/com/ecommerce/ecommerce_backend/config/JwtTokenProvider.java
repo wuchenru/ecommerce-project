@@ -3,12 +3,16 @@
 package com.ecommerce.ecommerce_backend.config;
 
 import io.jsonwebtoken.*;
+import io.jsonwebtoken.security.Keys;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 import com.ecommerce.ecommerce_backend.service.CustomUserDetailsService;
 
 import java.util.Date;
+
+import javax.crypto.SecretKey;
 
 @Component
 public class JwtTokenProvider {
@@ -35,11 +39,14 @@ public class JwtTokenProvider {
         //         .setExpiration(expiryDate)
         //         .signWith(SignatureAlgorithm.HS512, jwtSecret)
         //         .compact();
+
+        SecretKey secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS512);
+
         String token = Jwts.builder()
         .setSubject(userPrincipal.getUsername()) // typically email
         .setIssuedAt(new Date())
         .setExpiration(expiryDate)
-        .signWith(SignatureAlgorithm.HS512, jwtSecret)
+        .signWith(secretKey)
         .compact();
 
         // Print the generated token
