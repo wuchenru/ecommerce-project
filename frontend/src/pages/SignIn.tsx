@@ -21,9 +21,19 @@ const SignIn: React.FC = () => {
         }
       );
       alert(response.data); // "Login successful!" or "Invalid credentials!"
-      if (response.data === 'Login successful!') {
+      const { accessToken, tokenType } = response.data;
+      if (accessToken) {
+        alert("Login successful!");
+        // Save the token (e.g., in localStorage)
+        localStorage.setItem('token', `${tokenType} ${accessToken}`);
+        // Navigate to the home page
         navigate('/home');
+      } else {
+        alert("Invalid credentials!");
       }
+      // if (response.data === 'Login successful!') {
+      //   navigate('/home');
+      // }
     } catch (error: any) {
       console.error('Error signing in:', error);
       alert(error.response?.data || 'Login failed');
