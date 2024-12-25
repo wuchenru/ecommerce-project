@@ -20,7 +20,6 @@ const SignIn: React.FC = () => {
           },
         }
       );
-      alert(response.data); // "Login successful!" or "Invalid credentials!"
       const { accessToken, tokenType } = response.data;
       if (accessToken) {
         alert("Login successful!");
@@ -31,9 +30,6 @@ const SignIn: React.FC = () => {
       } else {
         alert("Invalid credentials!");
       }
-      // if (response.data === 'Login successful!') {
-      //   navigate('/home');
-      // }
     } catch (error: any) {
       console.error('Error signing in:', error);
       alert(error.response?.data || 'Login failed');
